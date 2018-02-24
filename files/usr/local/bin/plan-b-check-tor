@@ -2,7 +2,7 @@
 
 readonly board_name=$(cat /tmp/sysinfo/board_name)
 
-case $(board_name) in
+case ${board_name} in
   gl-ar150)
     readonly led=lan
     ;;
