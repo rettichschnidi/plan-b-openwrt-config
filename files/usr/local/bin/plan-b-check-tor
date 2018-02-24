@@ -2,12 +2,27 @@
 
 readonly board_name=$(cat /tmp/sysinfo/board_name)
 
+case $(board_name) in
+  gl-ar150)
+    readonly led=lan
+    ;;
+  gl-mt300a)
+    readonly led=wan
+    ;;
+  *)
+    logger -t plan-b Unsupported architecture: $(board_name)
+    exit 1
+    ;;
+esac
+
+readonly led_config=/sys/class/leds/${board_name}:${led}/brightness
+
 curl --max-time 5 -s --proxy socks5h://localhost:9050 http://google.ch/  --output /dev/null 2>&1
 
 if [ $? == 0 ]; then
   logger -t plan-b Tor is up!
-  echo 1 > /sys/class/leds/${board_name}:lan/brightness
+  echo 1 > ${led_config}
 else
   logger -t plan-b Tor is down!
-  echo 0 > /sys/class/leds/${board_name}:lan/brightness
+  echo 0 > ${led_config}
 fi
