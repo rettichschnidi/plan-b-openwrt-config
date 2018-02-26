@@ -16,9 +16,9 @@ case ${board_name} in
     exit 1
     ;;
 esac
-uci set system.wan_led.sysfs=${board_name}:${led}
 
 uci set system.wan_led=led
+uci set system.wan_led.sysfs=${board_name}:${led}
 uci set system.wan_led.name='WAN'
 uci set system.wan_led.trigger='netdev'
 uci set system.wan_led.dev='eth0'
