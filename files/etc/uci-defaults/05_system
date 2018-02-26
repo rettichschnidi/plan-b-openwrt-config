@@ -6,8 +6,8 @@
 # Enable WAN LED on link, blink on activity
 uci set system.wan_led=led
 uci set system.wan_led.sysfs=$(cat /tmp/sysinfo/board_name):wan
-uic set system.wan_led.name='WAN'
-uic set system.wan_led.trigger='netdev'
+uci set system.wan_led.name='WAN'
+uci set system.wan_led.trigger='netdev'
 uci set system.wan_led.dev='eth0'
 uci set system.wan_led.mode='link tx rx'
 
