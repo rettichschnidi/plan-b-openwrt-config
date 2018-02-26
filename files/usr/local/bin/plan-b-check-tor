@@ -10,7 +10,7 @@ case ${board_name} in
     readonly led=wan
     ;;
   *)
-    logger -t plan-b Unsupported architecture: ${board_name}
+    logger -t plan-b Unsupported board: ${board_name}
     exit 1
     ;;
 esac
