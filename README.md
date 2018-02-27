@@ -1,4 +1,4 @@
-# plan-b-openwrt-config
+# Plan B OpenWrt Config
 Configuration for a TOR-ed accesspoint, Plan B style
 
 # Build Instructions
