@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# Render firmware unusable after one 30 days.
+# This is a safety measure to prevent old (and possible bug ridden)
+# images from running forever. Once we have an auto updater this may
+# be reworked into some less strict form.
+
+readonly age=$(($(date +%s) - $(date -r /rom/bin/ +%s)))
+readonly age_limit=$((3600*24*30))
+
+if [ ${age} -gt ${age_limit} ]; then
+  logger -t plan-b "This image is too old. Shutting down!"
+  halt
+fi
