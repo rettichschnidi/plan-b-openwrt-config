@@ -10,7 +10,6 @@ uci -q batch <<-EOF >/dev/null
 
   set wireless.default_radio0.ssid='#CHFreeWiFi'
   set wireless.default_radio0.isolate='1'
-  set wireless.default_radio0.network='wifi'
 
   commit wireless
 EOF
